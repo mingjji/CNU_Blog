@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate, Params } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { deletePostById, getPostById } from '../api';
 import { IPost } from '../api/types';
@@ -60,8 +60,52 @@ const Text = styled.p`
 `;
 
 const Post = () => {
-  // todo (4) post 컴포넌트 작성
-  return <div style={{ margin: '5.5rem auto', width: '700px' }}></div>;
+  const params: Readonly<Params<string>> = useParams();
+  const { postId = '' } = params;
+  const [post, setPost] = useState<IPost | null>(null);
+  console.info(params, postId);
+
+  const fetchPostById = async (id: string): Promise<void> => {
+    const { data } = await getPostById(id);
+    setPost(data);
+  };
+
+  useEffect((): void => {
+    if (postId) {
+      fetchPostById(postId);
+    }
+  }, []);
+
+  if (!post) {
+    return <NotFound />;
+  }
+
+  return (
+    <div style={{ margin: '5.5rem auto', width: '700px' }}>
+      <div>
+        <Title>{post.title}</Title>
+        <Toolbar>
+          <Info>
+            <div>n분전</div>
+          </Info>
+          <div>
+            <TextButton>수정</TextButton>
+            <TextButton>삭제</TextButton>
+          </div>
+        </Toolbar>
+        {post?.tag && (
+          <TagWrapper>
+            <Tag>#{post.tag}</Tag>
+          </TagWrapper>
+        )}
+      </div>
+      <ContentsArea>
+        {post?.contents?.split('\n').map((text, index) => (
+          <Text key={index}>{text}</Text>
+        ))}
+      </ContentsArea>
+    </div>
+  );
 };
 
 export default Post;

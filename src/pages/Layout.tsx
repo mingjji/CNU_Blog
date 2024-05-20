@@ -60,14 +60,21 @@ const Layout = () => {
       <Profile>
         {/*todo (1) 프로필 꾸미기*/}
         <div>
-          <ProfilePicture src="" alt="프로필 사진" />
+          <ProfilePicture
+            src="https://mblogthumb-phinf.pstatic.net/MjAyMTAyMDZfMTI4/MDAxNjEyNjE2MDE5NTI1.q-SKqH7Phc7L-gnJ-fpw-sRQW9TsjVlfK-AV5pZWUAgg.0SY7VNJLkJuDBwbX_OK_qEbIJaFrtzw-m0Kqp3rW9NMg.JPEG.sosohan_n/ad17e8fbb8597a7f2b94543c1ed1c2da.jpg?type=w800"
+            alt="프로필 사진"
+          />
         </div>
         <div>
-          <Name>이름</Name>
-          <Description>설명</Description>
+          <Name>민지</Name>
+          <Description>2024 실전코딩</Description>
         </div>
       </Profile>
-      <Nav>{/*todo (2) 메뉴 작성*/}</Nav>
+      <Nav>
+        {/*todo (2) 메뉴 작성*/}
+        <NavLink to="/">포스트</NavLink>
+        <NavLink to="/resume">소개</NavLink>
+      </Nav>
       <Outlet />
     </div>
   );
