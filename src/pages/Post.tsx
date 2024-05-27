@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { useParams, Link, useNavigate, Params } from 'react-router-dom';
+// import { useEffect, useState } from 'react';
+import { useParams, Link, Params } from 'react-router-dom';
 import styled from '@emotion/styled';
-import { deletePostById, getPostById } from '../api';
-import { IPost } from '../api/types';
+// import { deletePostById, getPostById } from '../api';
+// import { IPost } from '../api/types';
 import NotFound from '../components/NotFound';
 import Tag from '../components/Tag';
 import useGetPostById from '../queries/useGetPostById';
@@ -63,10 +63,10 @@ const Text = styled.p`
 
 const Post = () => {
   // let isLoading = false;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const params: Readonly<Params<string>> = useParams();
   const { postId = '' } = params;
-  const { data: post, isError, isLoading } = useGetPostById(postId);
+  const { data: post, isLoading } = useGetPostById(postId);
   const { mutate: deletePost } = useDeletePostById();
   // const [post, setPost] = useState<IPost | null>(null);
   // console.info(params, postId);
