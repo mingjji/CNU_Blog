@@ -8,24 +8,32 @@ const instance = axios.create({
   baseURL: 'http://34.64.250.51:8080/',
 });
 
-// todo (6) api 작성
+// todo (6) api 작성 create, up, del
 
 export const getPostList = (): Promise<AxiosResponse<IResponsePostList>> => {
   return instance.get('/posts');
 };
 
-export const createPost = () => {
-  return null;
+export const createPost = (title: string, contents: string, tag: string) => {
+  return instance.post('/posts', {
+    title,
+    contents,
+    tag,
+  });
 };
 
 export const getPostById = (id: string): Promise<AxiosResponse<IPost>> => {
   return instance.get(`/posts/${id}`);
 };
 
-export const updatePostById = () => {
-  return null;
+export const updatePostById = (id: string, title: string, contents: string, tag: string) => {
+  return instance.put(`/posts/${id}`, {
+    title,
+    contents,
+    tag,
+  });
 };
 
-export const deletePostById = () => {
-  return null;
+export const deletePostById = (id: string) => {
+  return instance.delete(`/posts/${id}`);
 };
