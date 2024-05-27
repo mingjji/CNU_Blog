@@ -1,4 +1,4 @@
-import { createPost, updatePostById } from '../api';
+import { updatePostById } from '../api';
 import { useMutation } from '@tanstack/react-query';
 import { TAG } from '../api/types.ts';
 
