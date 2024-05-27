@@ -1,12 +1,11 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { TAG } from '../api/types';
-import { HttpProxy } from 'vite';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { createPost, getPostById, updatePostById } from '../api';
 import useGetPostList from '../queries/useGetPostList.ts';
 import useCreatePost from '../queries/useCreatePost.ts';
 import useUpdatePostById from '../queries/useUpdatePostById.ts';
+import useGetPostById from '../queries/useGetPostById.ts';
 
 const TitleInput = styled.input`
   display: block;
@@ -99,7 +98,7 @@ const Write = () => {
   const tagList = Object.keys(TAG);
   const navigate = useNavigate();
 
-  const { data: post, isSuccess: isSuccessfetchPost } = useGetPostList(state?.postId);
+  const { data: post, isSuccess: isSuccessfetchPost } = useGetPostById(state?.postId);
   const { mutate: createPost, isSuccess: isCreateSuccess } = useCreatePost();
   const { mutate: updatePost, isSuccess: isUpdateSuccess } = useUpdatePostById();
 

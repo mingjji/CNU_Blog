@@ -25,7 +25,7 @@ const Home = () => {
   //   fetchPostList();
   // }, []);
 
-  if (postList.length === 0) {
+  if (postList.length === 0 || isError) {
     return <NoPostList />;
   }
 
