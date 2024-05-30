@@ -8,7 +8,7 @@ const Home = () => {
   const { data: postList = [], isError, isLoading } = useGetPostList();
 
   if (isLoading) {
-    return <div>로딩중...</div>;
+    return <div>...불러 오는 중...</div>;
   }
 
   // const fetchPostList = async () => {
